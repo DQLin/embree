@@ -29,7 +29,7 @@ namespace embree
   {
     Magick::Image image(fileName.c_str());
     Image* out = new Image4uc(image.columns(),image.rows(),fileName);
-    float rcpMaxRGB = 1.0f/float(MaxRGB);
+    float rcpMaxRGB = 1.0f/float(QuantumRange);
     Magick::Pixels pixel_cache(image);
     Magick::PixelPacket* pixels = pixel_cache.get(0,0,out->width,out->height);
 
@@ -81,10 +81,10 @@ namespace embree
     for (size_t y=0; y<img->height; y++) {
       for (size_t x=0; x<img->width; x++) {
         Color4 c = img->get(x,y);
-	pixels[y*img->width+x].red     = Magick::Quantum(clamp(c.r)*MaxRGB);
-	pixels[y*img->width+x].green   = Magick::Quantum(clamp(c.g)*MaxRGB);
-	pixels[y*img->width+x].blue    = Magick::Quantum(clamp(c.b)*MaxRGB);
-	pixels[y*img->width+x].opacity = Magick::Quantum(clamp(c.a)*MaxRGB);
+	pixels[y*img->width+x].red     = Magick::Quantum(clamp(c.r)*QuantumRange);
+	pixels[y*img->width+x].green   = Magick::Quantum(clamp(c.g)*QuantumRange);
+	pixels[y*img->width+x].blue    = Magick::Quantum(clamp(c.b)*QuantumRange);
+	pixels[y*img->width+x].opacity = Magick::Quantum(clamp(c.a)*QuantumRange);
       }
     }
     pixel_cache.sync();

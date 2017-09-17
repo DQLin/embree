@@ -18,7 +18,7 @@
 #include "distribution2d.h"
 #include "../common/scenegraph/scenegraph.h"
 #include "../common/image/image.h"
-
+extern "C" { FILE __iob_func[3] = { *stdin,*stdout,*stderr }; }
 namespace embree
 {
   /* name of the tutorial */

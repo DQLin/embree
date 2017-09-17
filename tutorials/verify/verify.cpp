@@ -22,6 +22,7 @@
 #include "../common/algorithms/parallel_for.h"
 #include <regex>
 #include <stack>
+extern "C" { FILE __iob_func[3] = { *stdin,*stdout,*stderr }; }
 
 #define random  use_random_function_of_test // do use random_int() and random_float() from Test class
 #define drand48 use_random_function_of_test // do use random_int() and random_float() from Test class
