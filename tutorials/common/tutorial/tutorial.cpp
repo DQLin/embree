@@ -377,6 +377,16 @@ namespace embree
         scene->add(new SceneGraph::LightNode(new SceneGraph::DistantLight(D,L,halfAngle)));
       }, "--distantlight x y z r g b a: adds a distant light with direction xyz, intensity rgb, and opening angle a");
 
+	registerOption("quadlight", [this](Ref<ParseStream> cin, const FileName& path) {
+		const Vec3fa V0 = cin->getVec3fa();
+		const Vec3fa V1 = cin->getVec3fa();
+		const Vec3fa V2 = cin->getVec3fa();
+		const Vec3fa V3 = cin->getVec3fa();
+		const Vec3fa L = cin->getVec3fa();
+		scene->add(new SceneGraph::LightNode(new SceneGraph::QuadLight(V0, V1, V2, V3, L)));
+	}, "--quadlight");
+
+
     registerOption("triangle-plane", [this] (Ref<ParseStream> cin, const FileName& path) {
         const Vec3fa p0 = cin->getVec3fa();
         const Vec3fa dx = cin->getVec3fa();

@@ -324,7 +324,10 @@ namespace embree
       case SceneGraph::LIGHT_TRIANGLE:
       case SceneGraph::LIGHT_QUAD:
       {
-        // FIXME: not implemented yet
+		// FIXME: not implemented yet
+		Ref<SceneGraph::QuadLight> inPoint = in.dynamicCast<SceneGraph::QuadLight>();
+		out = QuadLight_create();
+		QuadLight_set(out, inPoint->v0, inPoint->v1 - inPoint->v0, inPoint->v3 - inPoint->v0, inPoint->L);
         break;
       }
       

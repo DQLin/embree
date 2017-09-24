@@ -15,7 +15,6 @@
 // ======================================================================== //
 
 #include "light.h"
-
 namespace embree {
 
 struct QuadLight
