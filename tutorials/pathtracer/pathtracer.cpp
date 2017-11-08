@@ -28,7 +28,7 @@ namespace embree
     {
       /* load default scene if none specified */
       if (scene->size() == 0 && sceneFilename.ext() == "") {
-        FileName file = FileName::executableFolder() + FileName("models/cornell_box.ecs");
+        FileName file = FileName::executableFolder() + FileName("models/crytek-sponza/sponza.ecs");
         parseCommandLine(new ParseStream(new LineCommentFilter(file, "#")), file.path());
       }
     }

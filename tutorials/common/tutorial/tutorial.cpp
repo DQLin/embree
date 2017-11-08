@@ -622,10 +622,12 @@ namespace embree
 
     switch (key)
     {
-    case 'w' : moveDelta.z = +1.0f; break;
-    case 's' : moveDelta.z = -1.0f; break;
-    case 'a' : moveDelta.x = -1.0f; break;
-    case 'd' : moveDelta.x = +1.0f; break;
+    case 'w' : moveDelta.z = +10.0f; break;
+    case 's' : moveDelta.z = -10.0f; break;
+    case 'a' : moveDelta.x = -10.0f; break;
+    case 'd' : moveDelta.x = +10.0f; break;
+	case 'q': moveDelta.y = +10.0f; break;
+	case 'e': moveDelta.y = -10.0f; break;
 
     case 'f' :
       if (fullscreen) {
@@ -647,9 +649,6 @@ namespace embree
       storeImage(image, "screenshot.tga");
       break;
     }
-
-    case '\033': case 'q': case 'Q':
-      glutDestroyWindow(windowID);
 #if defined(__MACOSX__) // FIXME: why only on MacOSX
       exit(1);
 #endif
@@ -665,7 +664,9 @@ namespace embree
     case 's' : moveDelta.z = 0.0f; break;
     case 'a' : moveDelta.x = 0.0f; break;
     case 'd' : moveDelta.x = 0.0f; break;
-    }
+	case 'q': moveDelta.y = 0.0f; break;
+	case 'e': moveDelta.y = 0.0f; break;
+	}
   }
 
   void TutorialApplication::specialFunc(int key, int x, int y)
